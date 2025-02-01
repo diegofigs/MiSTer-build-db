@@ -27,6 +27,6 @@ runs:
       run: set -o pipefail && python3 build_db.py >> $GITHUB_OUTPUT
       shell: bash
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
         GITHUB_REPOSITORY: ${{ github.repository }}
         DB_IB: ${{ inputs.db-name }}
