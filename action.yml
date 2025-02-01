@@ -24,7 +24,7 @@ runs:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
 
     - name: Run build_db.py
-      run: set -o pipefail && build-db.sh >> $GITHUB_OUTPUT
+      run: set -o pipefail && build_db.sh >> $GITHUB_OUTPUT
       shell: bash
       env:
         GITHUB_TOKEN: ${{ github.token }}
