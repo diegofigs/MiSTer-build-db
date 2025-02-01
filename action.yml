@@ -1,0 +1,32 @@
+name: "MiSTer build db"
+description: "Builds db file for distribution"
+inputs:
+  db-name:
+    description: "Name of DB (value used by downloader)"
+    required: true
+    default: "test"
+  dryrun:
+    description: "Flag to skip commiting"
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - name: Set git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      shell: bash
+
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+
+    - name: Run build_db.py
+      run: set -o pipefail && python3 build_db.py >> $GITHUB_OUTPUT
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        DB_IB: ${{ inputs.db-name }}
