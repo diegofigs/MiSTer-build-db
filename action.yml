@@ -11,6 +11,10 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Install apt-get utilities
+      run: sudo apt-get install detox sharutils
+      shell: bash
+
     - name: Set git
       run: |
         git config user.name "github-actions[bot]"
@@ -24,8 +28,8 @@ runs:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
 
     - name: Run build_db.py
-      run: set -o pipefail && build_db.sh >> $GITHUB_OUTPUT
-      shell: bash
+      run: build_db.py >> $GITHUB_OUTPUT
+      shell: python
       env:
         GITHUB_TOKEN: ${{ github.token }}
         GITHUB_REPOSITORY: ${{ github.repository }}

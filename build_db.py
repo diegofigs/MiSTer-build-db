@@ -1,4 +1,3 @@
-#! /usr/bin/env python3
 import subprocess
 import urllib.request
 import os
