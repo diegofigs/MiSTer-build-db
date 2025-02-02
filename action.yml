@@ -28,8 +28,8 @@ runs:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
 
     - name: Run build_db.py
-      run: build_db.py
-      shell: python
+      run: python ${{ github.action_path }}/build_db.py
+      shell: bash
       env:
         GITHUB_TOKEN: ${{ github.token }}
         GITHUB_REPOSITORY: ${{ github.repository }}
