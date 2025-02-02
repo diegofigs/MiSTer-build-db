@@ -21,14 +21,8 @@ runs:
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       shell: bash
 
-    - name: Set GitHub Path
-      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
-      shell: bash
-      env:
-        GITHUB_ACTION_PATH: ${{ github.action_path }}
-
     - name: Run build_db.py
-      run: python ${{ github.action_path }}/build_db.py
+      run: python ${{ github.action_path }}/build_db.py ${{ inputs.dryrun && '-d' || '' }}
       shell: bash
       env:
         GITHUB_TOKEN: ${{ github.token }}

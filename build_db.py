@@ -18,18 +18,6 @@ def main():
     if db_id is None:
         db_id = github_repo
 
-    if not dryrun:
-        run(["git", "config", "--global", "user.email", "github-actions[bot]"])
-        run(
-            [
-                "git",
-                "config",
-                "--global",
-                "user.name",
-                "41898282+github-actions[bot]@users.noreply.github.com",
-            ]
-        )
-
     log("downloading db_operator.py")
     urllib.request.urlretrieve(
         "https://raw.githubusercontent.com/MiSTer-devel/Distribution_MiSTer/main/.github/db_operator.py",
