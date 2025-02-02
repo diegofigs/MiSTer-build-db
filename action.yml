@@ -3,8 +3,7 @@ description: "Builds db file for distribution"
 inputs:
   db-name:
     description: "Name of DB (value used by downloader)"
-    required: true
-    default: "test"
+    required: false
   dryrun:
     description: "Flag to skip commiting"
     required: false
