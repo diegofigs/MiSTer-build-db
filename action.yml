@@ -27,4 +27,4 @@ runs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
         GITHUB_REPOSITORY: ${{ github.repository }}
-        DB_IB: ${{ inputs.db-name }}
+        DB_ID: ${{ inputs.db-name }}
